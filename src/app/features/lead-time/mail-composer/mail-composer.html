@@ -1,0 +1,97 @@
+@if (order().state === 'arrived') {
+  <div class="mc-closed">✓ Ordine arrivato — nessuna mail suggerita, il ciclo è chiuso.</div>
+} @else {
+  <div class="mc-box">
+    <div class="mc-tpls">
+      @for (key of MAIL_TEMPLATE_ORDER; track key) {
+        <button
+          type="button"
+          class="tpl-chip"
+          [class.on]="key === activeTemplate()"
+          (click)="pickTemplate(key)"
+        >
+          @if (key === suggested()) {
+            ✦
+          }
+          {{ MAIL_TEMPLATES[key].label }}
+        </button>
+      }
+    </div>
+
+    @if (activeTemplate(); as templateKey) {
+      <div class="mc-suggested">
+        <div class="mc-shead">
+          <span class="mc-stag" [class.alt]="templateKey !== suggested()">
+            @if (templateKey === suggested()) {
+              ✦ Suggerita per questo stato
+            } @else {
+              Alternativa
+            }
+          </span>
+          <span class="mc-stitle">{{ MAIL_TEMPLATES[templateKey].label }}</span>
+        </div>
+        <div class="mc-meta">
+          Da: acquisti&#64;propostavini.com · <span class="to">A: {{ recipient() }}</span>
+        </div>
+        <div class="mc-subject">Oggetto: {{ subject() }}</div>
+        <textarea
+          class="mc-body"
+          spellcheck="false"
+          [ngModel]="body()"
+          (ngModelChange)="body.set($event)"
+        ></textarea>
+
+        <div class="mc-fsel">
+          @for (key of SIGNATURE_ORDER; track key) {
+            <button
+              type="button"
+              class="tpl-chip"
+              [class.on]="key === signature()"
+              (click)="pickSignature(key)"
+            >
+              {{ signatureLabel(key) }}
+            </button>
+          }
+        </div>
+
+        @if (signature() !== 'none') {
+          <div class="mc-firma">
+            <img class="fimg" [class.big]="signature() === 'francesco'" src="img/glass-truck.png" alt="" />
+            <div class="fdati">
+              <span class="flogos">
+                <img src="img/logo-vini.png" alt="Proposta Vini" />
+                <img src="img/logo-spirits.png" alt="Proposta Spirits" />
+              </span>
+              <span class="fname">{{ SIGNATURES[signature()].name }}</span>
+              <span>{{ SIGNATURES[signature()].role }}</span>
+              @for (line of SIGNATURES[signature()].lines; track line[1]) {
+                @if (line[0] === 'link') {
+                  <a class="fmono flink" href="mailto:{{ line[1] }}">{{ line[1] }}</a>
+                } @else if (line[0] === 'bold') {
+                  <span class="fmono fbold">{{ line[1] }}</span>
+                } @else {
+                  <span class="fmono">{{ line[1] }}</span>
+                }
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="mc-send">
+        <button type="button" class="mc-obtn" [class.sent]="sent()" (click)="sendAuto()">
+          <img src="icons/outlook.svg" alt="" />
+          @if (sent()) {
+            ✓ Inviata da acquisti&#64;
+          } @else {
+            Invia con Outlook
+          }
+        </button>
+        <button type="button" class="mc-obtn mir" (click)="openInClient()">
+          Invia da Outlook
+          <img src="icons/outlook.svg" alt="" />
+        </button>
+      </div>
+    }
+  </div>
+}
