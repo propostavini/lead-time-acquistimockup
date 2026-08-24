@@ -1,0 +1,302 @@
+{
+  "purchase_orders": [
+    {
+      "id": 1,
+      "supplier_name": "Cantina Rossi — Valpolicella",
+      "supplier_code": "P00412",
+      "order_number": "26.AOR.00871",
+      "zone": "Fumane (VR)",
+      "carrier": "ARCO",
+      "is_pickup": true,
+      "order_date": "2026-07-08",
+      "state": "shipped",
+      "alert_message": null,
+      "milestones": { "sent": "2026-07-08", "received": "2026-07-09", "shipped": "2026-07-11", "arrived": null },
+      "lead_time": {
+        "history_days": 13, "history_note": "media 2024–25",
+        "geo_zone": "Valpolicella", "geo_days": 2, "geo_note": "Nord-Est",
+        "standard_days": 13, "standard_arrival": "2026-07-21", "standard_basis": "storico + geografia",
+        "pv_arrival": "2026-07-23"
+      },
+      "tracking": {
+        "mode": "pickup", "carrier_name": "ARCO · ritiro nostro", "reference": "rif. 26.AOR.00871",
+        "events": [
+          { "datetime": "2026-07-10T09:00", "description": "Merce pronta al ritiro — confermato dal produttore", "kind": "past" },
+          { "datetime": "2026-07-11T07:30", "description": "Ritiro affidato ad ARCO — porto assegnato", "kind": "past" },
+          { "datetime": "2026-07-12T06:40", "description": "In viaggio verso il nostro magazzino", "kind": "current" }
+        ]
+      },
+      "mails": [
+        { "direction": "out", "datetime": "2026-07-08T09:12", "subject": "Ordine 26.AOR.00871 — 40 casse", "snippet": "Buongiorno, in allegato l'ordine. Passiamo noi a ritirare.", "detected_state_label": "INVIATO", "by_ai": false },
+        { "direction": "in", "datetime": "2026-07-09T11:40", "subject": "Re: Ordine — ricevuto", "snippet": "Confermo ricezione, merce pronta da giovedì.", "detected_state_label": "RICEVUTO", "by_ai": true },
+        { "direction": "in", "datetime": "2026-07-11T16:05", "subject": "Re: merce pronta", "snippet": "Bancale pronto, potete passare quando volete.", "detected_state_label": "RICEVUTO · merce pronta", "by_ai": true },
+        { "direction": "carrier", "datetime": "2026-07-11T13:10", "subject": "Ritiro Arco Spedizioni numero 54390312 del 11/07/2026", "snippet": "PORTO ASSEGNATO · ritiro 12/07 · 1 bancale, 540 kg · Riferimento ritiro: 26.AOR.00871", "detected_state_label": "SPEDITO · ritiro ARCO", "by_ai": true }
+      ]
+    },
+    {
+      "id": 2,
+      "supplier_name": "Cascina Bianchi — Piemonte",
+      "supplier_code": "P00238",
+      "order_number": "26.AOR.00863",
+      "zone": "Neive (CN)",
+      "carrier": "ARCO",
+      "is_pickup": true,
+      "order_date": "2026-07-01",
+      "state": "sent",
+      "alert_message": "Inviato da 11 giorni, nessuna risposta. La soglia di conferma (2 gg) è ampiamente superata: sollecitare.",
+      "milestones": { "sent": "2026-07-01", "received": null, "shipped": null, "arrived": null },
+      "lead_time": {
+        "history_days": 10, "history_note": "media 2024–25",
+        "geo_zone": "Langhe", "geo_days": 2, "geo_note": "Nord-Ovest",
+        "standard_days": 10, "standard_arrival": "2026-07-11", "standard_basis": "storico + geografia (nessuna mail di ritorno)",
+        "pv_arrival": null
+      },
+      "tracking": null,
+      "mails": [
+        { "direction": "out", "datetime": "2026-07-01T08:50", "subject": "Ordine 26.AOR.00863 — 25 casse", "snippet": "Ci organizziamo per il ritiro.", "detected_state_label": "INVIATO", "by_ai": false }
+      ]
+    },
+    {
+      "id": 3,
+      "supplier_name": "Podere Gialli — Marche",
+      "supplier_code": "P00305",
+      "order_number": "26.AOR.00869",
+      "zone": "Jesi (AN)",
+      "carrier": "GLS",
+      "is_pickup": false,
+      "order_date": "2026-07-06",
+      "state": "received",
+      "alert_message": "Ricevuto il 08/07 ma non spedito dopo 4 giorni. La soglia di spedizione (3 gg) è superata: chiedere data di spedizione.",
+      "milestones": { "sent": "2026-07-06", "received": "2026-07-08", "shipped": null, "arrived": null },
+      "lead_time": {
+        "history_days": 9, "history_note": "media 2024–25",
+        "geo_zone": "Marche", "geo_days": 3, "geo_note": "Centro-Adriatico",
+        "standard_days": 9, "standard_arrival": "2026-07-15", "standard_basis": "storico + geografia",
+        "pv_arrival": null
+      },
+      "tracking": null,
+      "mails": [
+        { "direction": "out", "datetime": "2026-07-06T10:20", "subject": "Ordine 26.AOR.00869 — 30 casse", "snippet": "Ordine in allegato.", "detected_state_label": "INVIATO", "by_ai": false },
+        { "direction": "in", "datetime": "2026-07-08T09:05", "subject": "Re: ricevuto", "snippet": "Buongiorno, ricevuto tutto, ci sentiamo.", "detected_state_label": "RICEVUTO", "by_ai": true }
+      ]
+    },
+    {
+      "id": 4,
+      "supplier_name": "Vigneti Sarti — Trentino",
+      "supplier_code": "P00348",
+      "order_number": "26.AOR.00876",
+      "zone": "Mezzolombardo (TN)",
+      "carrier": "ARCO",
+      "is_pickup": true,
+      "order_date": "2026-07-10",
+      "state": "received",
+      "alert_message": null,
+      "milestones": { "sent": "2026-07-10", "received": "2026-07-11", "shipped": null, "arrived": null },
+      "lead_time": {
+        "history_days": 7, "history_note": "media 2024–25",
+        "geo_zone": "Trentino", "geo_days": 1, "geo_note": "vicini",
+        "standard_days": 7, "standard_arrival": "2026-07-17", "standard_basis": "storico + geografia",
+        "pv_arrival": null
+      },
+      "tracking": null,
+      "mails": [
+        { "direction": "out", "datetime": "2026-07-10T09:30", "subject": "Ordine 26.AOR.00876 — 45 casse", "snippet": "In allegato l'ordine, passiamo noi a ritirare.", "detected_state_label": "INVIATO", "by_ai": false },
+        { "direction": "in", "datetime": "2026-07-11T08:20", "subject": "Re: ordine ricevuto", "snippet": "Buongiorno, ordine ricevuto: vi avvisiamo appena la merce è pronta.", "detected_state_label": "RICEVUTO", "by_ai": true }
+      ]
+    },
+    {
+      "id": 5,
+      "supplier_name": "Borgo Ulivi — Abruzzo",
+      "supplier_code": "P00289",
+      "order_number": "26.AOR.00875",
+      "zone": "Ortona (CH)",
+      "carrier": "ARCO",
+      "is_pickup": false,
+      "order_date": "2026-07-09",
+      "state": "received",
+      "alert_message": null,
+      "milestones": { "sent": "2026-07-09", "received": "2026-07-10", "shipped": null, "arrived": null },
+      "lead_time": {
+        "history_days": 10, "history_note": "media 2024–25",
+        "geo_zone": "Abruzzo", "geo_days": 3, "geo_note": "Centro-Adriatico",
+        "standard_days": 10, "standard_arrival": "2026-07-19", "standard_basis": "storico + geografia",
+        "pv_arrival": null
+      },
+      "tracking": null,
+      "mails": [
+        { "direction": "out", "datetime": "2026-07-09T11:10", "subject": "Ordine 26.AOR.00875 — 30 casse", "snippet": "Ordine in allegato.", "detected_state_label": "INVIATO", "by_ai": false },
+        { "direction": "in", "datetime": "2026-07-10T09:45", "subject": "Re: confermiamo", "snippet": "Confermiamo l'ordine, spediamo lunedì con ARCO.", "detected_state_label": "RICEVUTO", "by_ai": true }
+      ]
+    },
+    {
+      "id": 6,
+      "supplier_name": "Tenuta Alba — Etna",
+      "supplier_code": "P00533",
+      "order_number": "26.AOR.00874",
+      "zone": "Randazzo (CT)",
+      "carrier": "ARCO",
+      "is_pickup": false,
+      "order_date": "2026-07-09",
+      "state": "shipped",
+      "alert_message": null,
+      "milestones": { "sent": "2026-07-09", "received": "2026-07-09", "shipped": "2026-07-11", "arrived": null },
+      "lead_time": {
+        "history_days": 12, "history_note": "media 2024–25",
+        "geo_zone": "Sicilia", "geo_days": 5, "geo_note": "Sud/Isole",
+        "standard_days": 12, "standard_arrival": "2026-07-21", "standard_basis": "storico + geografia",
+        "pv_arrival": null
+      },
+      "tracking": {
+        "mode": "carrier", "carrier_name": "ARCO", "reference": "rif. nostro 26.AOR.00874",
+        "events": [
+          { "datetime": "2026-07-11T17:00", "description": "Spedizione registrata — Catania", "kind": "past" },
+          { "datetime": "2026-07-12T05:30", "description": "In transito — filiale di Bologna", "kind": "current" }
+        ]
+      },
+      "mails": [
+        { "direction": "out", "datetime": "2026-07-09T08:40", "subject": "Ordine 26.AOR.00874 — 35 casse", "snippet": "Ordine in allegato.", "detected_state_label": "INVIATO", "by_ai": false },
+        { "direction": "in", "datetime": "2026-07-09T12:15", "subject": "Re: ricevuto", "snippet": "Ricevuto, spediamo con ARCO come sempre.", "detected_state_label": "RICEVUTO", "by_ai": true },
+        { "direction": "in", "datetime": "2026-07-11T18:20", "subject": "Re: spedito", "snippet": "Partito oggi con ARCO, rif. vostro ordine.", "detected_state_label": "SPEDITO · data 11/07", "by_ai": true },
+        { "direction": "carrier", "datetime": "2026-07-11T19:02", "subject": "ARCO Spedizioni — presa in carico", "snippet": "Spedizione registrata a Catania · Riferimento: 26.AOR.00874", "detected_state_label": "SPEDITO · tracking ARCO", "by_ai": true }
+      ]
+    },
+    {
+      "id": 7,
+      "supplier_name": "Fattoria Blu — Puglia",
+      "supplier_code": "P00477",
+      "order_number": "26.AOR.00858",
+      "zone": "Manduria (TA)",
+      "carrier": "ARCO",
+      "is_pickup": false,
+      "order_date": "2026-06-30",
+      "state": "shipped",
+      "alert_message": "Spedita il 05/07, arrivo stimato 09/07 già superato e ARCO segna una giacenza. La merce sarebbe già dovuta arrivare: verificare con ARCO.",
+      "milestones": { "sent": "2026-06-30", "received": "2026-07-01", "shipped": "2026-07-05", "arrived": null },
+      "lead_time": {
+        "history_days": 11, "history_note": "media 2024–25",
+        "geo_zone": "Puglia", "geo_days": 4, "geo_note": "Sud",
+        "standard_days": 11, "standard_arrival": "2026-07-09", "standard_basis": "storico + geografia",
+        "pv_arrival": null
+      },
+      "tracking": {
+        "mode": "carrier", "carrier_name": "ARCO", "reference": "rif. nostro 26.AOR.00858",
+        "events": [
+          { "datetime": "2026-07-05T19:10", "description": "Spedizione registrata — Taranto", "kind": "past" },
+          { "datetime": "2026-07-07T08:00", "description": "In transito — filiale di Bologna", "kind": "past" },
+          { "datetime": "2026-07-08T14:30", "description": "GIACENZA — in attesa di essere prenotata", "kind": "exception" }
+        ]
+      },
+      "mails": [
+        { "direction": "out", "datetime": "2026-06-30T09:00", "subject": "Ordine 26.AOR.00858 — 50 casse", "snippet": "Ordine in allegato.", "detected_state_label": "INVIATO", "by_ai": false },
+        { "direction": "in", "datetime": "2026-07-01T15:20", "subject": "Re: ok", "snippet": "Ricevuto, spediamo a inizio settimana.", "detected_state_label": "RICEVUTO", "by_ai": true },
+        { "direction": "in", "datetime": "2026-07-05T17:45", "subject": "Re: spedito", "snippet": "Partito con ARCO, rif. vostro ordine.", "detected_state_label": "SPEDITO · data 05/07", "by_ai": true },
+        { "direction": "carrier", "datetime": "2026-07-05T19:15", "subject": "ARCO Spedizioni — presa in carico", "snippet": "Spedizione registrata a Taranto · Riferimento: 26.AOR.00858", "detected_state_label": "SPEDITO · tracking ARCO", "by_ai": true }
+      ]
+    },
+    {
+      "id": 8,
+      "supplier_name": "Cascina Oro — Franciacorta",
+      "supplier_code": "P00611",
+      "order_number": "26.AOR.00867",
+      "zone": "Erbusco (BS)",
+      "carrier": "ARCO",
+      "is_pickup": true,
+      "order_date": "2026-07-07",
+      "state": "shipped",
+      "alert_message": null,
+      "milestones": { "sent": "2026-07-07", "received": "2026-07-08", "shipped": "2026-07-10", "arrived": null },
+      "lead_time": {
+        "history_days": 8, "history_note": "media 2024–25",
+        "geo_zone": "Franciacorta", "geo_days": 2, "geo_note": "Nord-Est",
+        "standard_days": 8, "standard_arrival": "2026-07-15", "standard_basis": "storico + geografia",
+        "pv_arrival": null
+      },
+      "tracking": {
+        "mode": "pickup", "carrier_name": "ARCO · ritiro nostro", "reference": "rif. 26.AOR.00867",
+        "events": [
+          { "datetime": "2026-07-10T09:00", "description": "Merce pronta al ritiro — confermato dal produttore", "kind": "past" },
+          { "datetime": "2026-07-12T07:30", "description": "Ritiro ARCO prenotato — rientro previsto 13/07", "kind": "current" }
+        ]
+      },
+      "mails": [
+        { "direction": "out", "datetime": "2026-07-07T11:00", "subject": "Ordine 26.AOR.00867 — 20 casse", "snippet": "Passiamo noi a ritirare.", "detected_state_label": "INVIATO", "by_ai": false },
+        { "direction": "in", "datetime": "2026-07-08T10:10", "subject": "Re: pronti", "snippet": "Ok, merce pronta da giovedì.", "detected_state_label": "RICEVUTO", "by_ai": true }
+      ]
+    },
+    {
+      "id": 9,
+      "supplier_name": "Tenuta Corvi — Veneto",
+      "supplier_code": "P00154",
+      "order_number": "26.AOR.00878",
+      "zone": "Motta di Livenza (TV)",
+      "carrier": "ARCO",
+      "is_pickup": false,
+      "order_date": "2026-07-11",
+      "state": "not_sent",
+      "alert_message": "Ordine presente in NAV da 1 giorno ma nessuna mail in uscita trovata con questo numero in oggetto: l'ordine non è partito.",
+      "milestones": { "sent": null, "received": null, "shipped": null, "arrived": null },
+      "lead_time": {
+        "history_days": 9, "history_note": "media 2024–25",
+        "geo_zone": "Veneto", "geo_days": 2, "geo_note": "Nord-Est",
+        "standard_days": 9, "standard_arrival": "2026-07-20", "standard_basis": "storico + geografia (dalla data ordine NAV)",
+        "pv_arrival": null
+      },
+      "tracking": null,
+      "mails": []
+    },
+    {
+      "id": 10,
+      "supplier_name": "Tenuta Verdi — Sicilia",
+      "supplier_code": "P00521",
+      "order_number": "26.AOR.00844",
+      "zone": "Vittoria (RG)",
+      "carrier": "BRT",
+      "is_pickup": false,
+      "order_date": "2026-06-20",
+      "state": "arrived",
+      "alert_message": null,
+      "milestones": { "sent": "2026-06-20", "received": "2026-06-21", "shipped": "2026-06-28", "arrived": "2026-07-04" },
+      "lead_time": {
+        "history_days": 12, "history_note": "media 2024–25",
+        "geo_zone": "Sicilia", "geo_days": 5, "geo_note": "Sud/Isole",
+        "standard_days": 12, "standard_arrival": "2026-07-02", "standard_basis": "storico + geografia",
+        "pv_arrival": null
+      },
+      "tracking": {
+        "mode": "carrier", "carrier_name": "BRT", "reference": "0AB 99887766",
+        "events": [
+          { "datetime": "2026-06-28", "description": "Presa in carico — Ragusa", "kind": "past" },
+          { "datetime": "2026-07-03", "description": "In consegna — Verona", "kind": "past" },
+          { "datetime": "2026-07-04", "description": "Consegnato — magazzino PV", "kind": "current" }
+        ]
+      },
+      "mails": [
+        { "direction": "out", "datetime": "2026-06-20T10:00", "subject": "Ordine 26.AOR.00844 — 60 casse", "snippet": "Ordine in allegato.", "detected_state_label": "INVIATO", "by_ai": false },
+        { "direction": "in", "datetime": "2026-06-21T09:15", "subject": "Re: ricevuto", "snippet": "Ok ricevuto.", "detected_state_label": "RICEVUTO", "by_ai": true },
+        { "direction": "in", "datetime": "2026-06-28T17:30", "subject": "Re: spedito", "snippet": "Partito col corriere.", "detected_state_label": "SPEDITO", "by_ai": true },
+        { "direction": "nav", "datetime": "2026-07-04", "subject": "Merce ricevuta a magazzino", "snippet": "Giacenza verde: carico su NAV.", "detected_state_label": "ARRIVATO", "by_ai": false }
+      ]
+    },
+    {
+      "id": 11,
+      "supplier_name": "Podere Neri — Toscana",
+      "supplier_code": "P00190",
+      "order_number": "",
+      "zone": "Montalcino (SI)",
+      "carrier": null,
+      "is_pickup": false,
+      "order_date": null,
+      "state": "none",
+      "alert_message": null,
+      "milestones": { "sent": null, "received": null, "shipped": null, "arrived": null },
+      "lead_time": {
+        "history_days": null, "history_note": "riordino ~40 gg · ultimo ordine 45 gg fa",
+        "geo_zone": "Toscana", "geo_days": 3, "geo_note": "Centro",
+        "standard_days": null, "standard_arrival": null, "standard_basis": "nessun ordine attivo: guardo lo storico dei riordini",
+        "pv_arrival": null
+      },
+      "tracking": null,
+      "mails": []
+    }
+  ]
+}
