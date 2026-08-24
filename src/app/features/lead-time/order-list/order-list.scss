@@ -1,17 +1,6 @@
-/* Stili nella cartella globale src/styles/_order-list.scss (issue #10).
-   Qui solo gli override PrimeNG del datepicker, che vincono sul tema. */
-:host ::ng-deep .ol-date .p-datepicker-input {
-  font-family: var(--font-mono) !important;
-  font-size: 10.5px !important;
-  padding: 6px 11px !important;
-  border-radius: 10px !important;
-  border: 1px solid var(--line) !important;
-  background: #fff !important;
-  color: var(--muted) !important;
-  width: 108px;
-}
-
-:host ::ng-deep .ol-date .p-datepicker-input:focus {
-  border-color: var(--forest) !important;
-  box-shadow: none !important;
-}
+/* Stili nella cartella globale src/styles/_order-list.scss (issue #10):
+   .ol-date, .ol-date-input e .ol-datepanel sono classi passate a PrimeNG via
+   styleClass/inputStyleClass/panelStyleClass e finiscono su elementi non
+   incapsulati, quindi il bundle globale le raggiunge senza bisogno di
+   ::ng-deep qui. Questo file resta vuoto apposta (niente override in
+   conflitto con quelli globali). */

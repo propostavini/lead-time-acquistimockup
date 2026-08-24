@@ -105,6 +105,15 @@ p-datepicker.ol-date,
   border-radius: 8px;
 }
 
+/* pannello calendario (appendTo="body", quindi appare fuori dalla colonna
+   sinistra: senza appendTo veniva tagliato dallo overflow-y:auto di .lt-side).
+   Leggermente rimpicciolito con uno scale, ancorato in alto a sinistra cosi'
+   non si sposta rispetto a dove PrimeNG lo aggancia al campo data. */
+.ol-datepanel {
+  transform: scale(0.92);
+  transform-origin: top left;
+}
+
 /* tendina stato: stesso formato/colore delle pillole di stato (.pill + .p-xxx) */
 .ol-statesel {
   appearance: none;

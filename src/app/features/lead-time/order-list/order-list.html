@@ -44,8 +44,10 @@
       dateFormat="dd/mm/yy"
       placeholder="Dal"
       [showIcon]="false"
+      appendTo="body"
       styleClass="ol-date"
       inputStyleClass="ol-date-input"
+      panelStyleClass="ol-datepanel"
     />
     <p-datepicker
       [ngModel]="endDate()"
@@ -53,8 +55,10 @@
       dateFormat="dd/mm/yy"
       placeholder="Al"
       [showIcon]="false"
+      appendTo="body"
       styleClass="ol-date"
       inputStyleClass="ol-date-input"
+      panelStyleClass="ol-datepanel"
     />
     @if (startDate() || endDate()) {
       <button type="button" class="ol-clear" (click)="clearDates()">✕ date</button>
