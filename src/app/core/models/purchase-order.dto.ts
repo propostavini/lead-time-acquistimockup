@@ -130,6 +130,8 @@ export interface PurchaseOrdersFilters {
   /** Testo libero su nome fornitore o numero ordine. */
   search?: string;
   onlyAlerts?: boolean;
+  /** Filtro sullo stato della matrice (tendina "Stato"). */
+  state?: PurchaseOrderState;
   /** pickup = RITIRO (PA), shipping = SPEDIZIONE (PF). */
   mode?: 'pickup' | 'shipping';
   /** ISO "2026-07-01" — ordini dal. */

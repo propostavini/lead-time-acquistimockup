@@ -42,7 +42,7 @@
       [ngModel]="startDate()"
       (ngModelChange)="startDate.set($event)"
       dateFormat="dd/mm/yy"
-      placeholder="Ordini dal —"
+      placeholder="DAL"
       [showIcon]="false"
       styleClass="ol-date"
       inputStyleClass="ol-date-input"
@@ -51,7 +51,7 @@
       [ngModel]="endDate()"
       (ngModelChange)="endDate.set($event)"
       dateFormat="dd/mm/yy"
-      placeholder="fino al —"
+      placeholder="AL"
       [showIcon]="false"
       styleClass="ol-date"
       inputStyleClass="ol-date-input"
@@ -59,6 +59,19 @@
     @if (startDate() || endDate()) {
       <button type="button" class="ol-clear" (click)="clearDates()">✕ date</button>
     }
+  </div>
+
+  <div class="ol-frow">
+    <select
+      class="ol-statesel"
+      [ngModel]="state()"
+      (ngModelChange)="state.set($event)"
+    >
+      <option value="">Nessuno</option>
+      @for (opt of stateOptions; track opt.value) {
+        <option [value]="opt.value">{{ opt.label }}</option>
+      }
+    </select>
   </div>
 </div>
 

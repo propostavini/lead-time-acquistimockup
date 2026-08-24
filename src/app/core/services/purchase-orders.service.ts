@@ -19,7 +19,7 @@ export class PurchaseOrdersService {
 
   /**
    * Ordini a fornitore, dal piu' recente al meno recente (ordina il server).
-   * I filtri si combinano liberamente: testo, solo allerte, PA/PF, intervallo date.
+   * I filtri si combinano liberamente: testo, solo allerte, stato, PA/PF, intervallo date.
    * Regola concordata: start_date <= end_date quando entrambe presenti.
    * Contratto: GET /purchase_orders
    */
@@ -37,6 +37,9 @@ export class PurchaseOrdersService {
     }
     if (filters.mode) {
       params = params.set('mode', filters.mode);
+    }
+    if (filters.state) {
+      params = params.set('state', filters.state);
     }
     if (filters.startDate) {
       params = params.set('start_date', filters.startDate);

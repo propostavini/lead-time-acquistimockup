@@ -81,6 +81,38 @@
   border-color: var(--forest);
 }
 
+.ol-date {
+  width: 78px;
+}
+
+.ol-date-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  border-radius: 8px;
+}
+
+.ol-statesel {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.ol-statesel:focus {
+  border-color: var(--forest);
+  color: var(--ink);
+  outline: none;
+}
+
 .ol-clear {
   font-family: var(--font-sans);
   font-size: 11px;

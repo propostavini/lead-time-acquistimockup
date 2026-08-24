@@ -1,8 +1,25 @@
 import { Component, effect, inject, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { PurchaseOrderDTO, PurchaseOrdersFilters, STATE_LABELS } from '@core/models';
+import {
+  PURCHASE_ORDER_STATES,
+  PurchaseOrderDTO,
+  PurchaseOrdersFilters,
+  PurchaseOrderState,
+  STATE_LABELS,
+} from '@core/models';
 import { PurchaseOrdersService } from '@core/services';
 import { DatePickerModule } from 'primeng/datepicker';
+
+/**
+ * Opzioni della tendina "Stato": i 5 stati filtrabili della matrice v2,
+ * NONE escluso (nessun ordine attivo non e' un valore utile da filtrare).
+ * L'opzione "Nessuno" in cima alla tendina significa "nessun filtro attivo".
+ */
+const STATE_FILTER_OPTIONS: { value: PurchaseOrderState; label: string }[] = (
+  Object.values(PURCHASE_ORDER_STATES) as PurchaseOrderState[]
+)
+  .filter((state) => state !== PURCHASE_ORDER_STATES.NONE)
+  .map((state) => ({ value: state, label: STATE_LABELS[state].label }));
 
 @Component({
   selector: 'app-order-list',
@@ -19,10 +36,12 @@ export class OrderList {
   readonly selectOrder = output<number>();
 
   readonly STATE_LABELS = STATE_LABELS;
+  readonly stateOptions = STATE_FILTER_OPTIONS;
 
   readonly search = signal('');
   readonly onlyAlerts = signal(false);
   readonly mode = signal<'pickup' | 'shipping' | null>(null);
+  readonly state = signal<PurchaseOrderState | ''>('');
   readonly startDate = signal<Date | null>(null);
   readonly endDate = signal<Date | null>(null);
 
@@ -33,6 +52,7 @@ export class OrderList {
         search: this.search() || undefined,
         onlyAlerts: this.onlyAlerts() || undefined,
         mode: this.mode() ?? undefined,
+        state: this.state() || undefined,
         startDate: this.toIso(this.startDate()),
         endDate: this.toIso(this.endDate()),
       });

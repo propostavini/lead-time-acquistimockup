@@ -14,6 +14,7 @@ server.get('/purchase_orders', (req, res) => {
   const search = (req.query.search || '').toLowerCase();
   const onlyAlerts = req.query.only_alerts === 'true';
   const mode = req.query.mode; // 'pickup' | 'shipping'
+  const state = req.query.state; // stato della matrice, es. 'shipped'
   const start = req.query.start_date;
   const end = req.query.end_date;
   if (start && end && start > end) {
@@ -26,6 +27,7 @@ server.get('/purchase_orders', (req, res) => {
     .filter((o) => !onlyAlerts || o.alert_message)
     .filter((o) => mode !== 'pickup' || o.is_pickup)
     .filter((o) => mode !== 'shipping' || (!o.is_pickup && o.carrier))
+    .filter((o) => !state || o.state === state)
     .filter((o) => !(start || end) || o.order_date)
     .filter((o) => !start || o.order_date >= start)
     .filter((o) => !end || o.order_date <= end)
