@@ -111,11 +111,16 @@
   gap: 13px;
 }
 
-/* stessa foto (bicchiere+camioncino) e stessa dimensione per entrambe le firme */
+/* stessa foto (bicchiere+camioncino) per entrambe le firme; quella di
+   Francesco un po' più alta su richiesta di Roberto. */
 .mc-firma .fimg {
   height: 78px;
   width: auto;
   flex-shrink: 0;
+}
+
+.mc-firma .fimg.big {
+  height: 92px;
 }
 
 .mc-firma .fdati {
