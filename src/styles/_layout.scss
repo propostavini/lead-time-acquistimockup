@@ -1,0 +1,64 @@
+.lt-topbar {
+  background: var(--ivory);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  padding: 2px 16px;
+  height: 36px;
+}
+
+.lt-topbar .glass {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.lt-topbar .glass.spin {
+  animation: lt-glass-spin 0.9s linear infinite;
+  transform-origin: 50% 55%;
+}
+
+@keyframes lt-glass-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lt-refresh {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--forest);
+  background: #fff;
+  border: 1px solid var(--sage-line);
+  border-radius: 20px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.lt-refresh:hover {
+  background: var(--sage-soft);
+}
+
+.lt-app {
+  display: grid;
+  grid-template-columns: 328px 1fr;
+  min-height: calc(100vh - var(--topbar-h));
+}
+
+.lt-side {
+  border-right: 1px solid var(--line);
+  background: var(--card2);
+  overflow-y: auto;
+  max-height: calc(100vh - var(--topbar-h));
+}
+
+.lt-main {
+  position: relative;
+  overflow-y: auto;
+  max-height: calc(100vh - var(--topbar-h));
+  padding: 26px 34px 70px;
+}

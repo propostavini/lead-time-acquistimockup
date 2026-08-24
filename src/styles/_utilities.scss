@@ -1,0 +1,131 @@
+/* Classi condivise tra lista e dettaglio (stili estratti nel bundle globale, issue #10). */
+
+.pill {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+
+.p-none {
+  background: #f2eee2;
+  color: var(--muted);
+  border-color: var(--line);
+}
+
+.p-notsent {
+  background: var(--terra-soft);
+  color: var(--terra);
+  border-color: var(--terra-line);
+}
+
+.p-sent {
+  background: var(--gold-soft);
+  color: var(--gold);
+  border-color: var(--gold-line);
+}
+
+.p-received {
+  background: var(--celeste-bg);
+  color: var(--blu);
+  border-color: var(--celeste-line);
+}
+
+.p-shipped {
+  background: var(--orange-soft);
+  color: var(--orange);
+  border-color: var(--orange-line);
+}
+
+.p-arrived {
+  background: var(--sage-soft);
+  color: var(--forest);
+  border-color: var(--sage-line);
+}
+
+.statebadge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 6px 14px;
+  border-radius: 22px;
+  border: 1px solid;
+}
+
+.chip {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--sand);
+  color: var(--sandtext);
+  border: 1px solid var(--sand-line);
+}
+
+.chip.ritiro {
+  background: var(--sage-soft);
+  color: var(--forest);
+  border-color: var(--sage-line);
+}
+
+.chip.neutra {
+  background: #fff;
+  color: var(--muted);
+}
+
+.tpl-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 11px;
+  border-radius: 20px;
+  border: 1px solid var(--celeste-line);
+  background: #fff;
+  color: var(--celeste);
+  cursor: pointer;
+}
+
+.tpl-chip.on {
+  background: var(--celeste);
+  color: #fff;
+  border-color: var(--celeste);
+}
+
+.patag {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.patag.pa {
+  background: var(--sage-soft);
+  color: var(--forest);
+  border-color: var(--sage-line);
+}
+
+.patag.pf {
+  background: var(--celeste-bg);
+  color: var(--blu);
+  border-color: var(--celeste-line);
+}
+
+.icon-14 {
+  width: 14px;
+  height: 14px;
+}
+
+.icon-20 {
+  width: 20px;
+  height: 20px;
+}
