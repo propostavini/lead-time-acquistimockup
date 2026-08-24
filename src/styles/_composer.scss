@@ -111,14 +111,11 @@
   gap: 13px;
 }
 
+/* stessa foto (bicchiere+camioncino) e stessa dimensione per entrambe le firme */
 .mc-firma .fimg {
   height: 78px;
   width: auto;
   flex-shrink: 0;
-}
-
-.mc-firma .fimg.big {
-  height: 108px;
 }
 
 .mc-firma .fdati {

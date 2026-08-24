@@ -81,9 +81,19 @@
   border-color: var(--forest);
 }
 
+/* riga delle due date: mai a capo, sempre una di fianco all'altra */
+.ol-frow-dates {
+  flex-wrap: nowrap;
+}
+
+/* larghezza forzata sia sul tag p-datepicker sia sul suo styleClass interno:
+   PrimeNG allarga il datepicker al 100% del contenitore di default, quindi
+   senza questa doppia regola le due date finiscono una sopra l'altra */
+p-datepicker.ol-date,
 .ol-date {
-  width: 56px;
-  flex: 0 0 auto;
+  width: 56px !important;
+  max-width: 56px !important;
+  flex: 0 0 56px !important;
 }
 
 .ol-date-input {
@@ -95,23 +105,22 @@
   border-radius: 8px;
 }
 
+/* tendina stato: stesso formato/colore delle pillole di stato (.pill + .p-xxx) */
 .ol-statesel {
-  font-family: var(--font-sans);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  padding: 6px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--muted);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   cursor: pointer;
+  outline: none;
 }
 
 .ol-statesel:focus {
-  border-color: var(--forest);
-  color: var(--ink);
-  outline: none;
+  outline: 2px solid var(--forest);
+  outline-offset: 1px;
+}
+
+.ol-statesel option {
+  font-family: var(--font-sans);
 }
 
 .ol-clear {

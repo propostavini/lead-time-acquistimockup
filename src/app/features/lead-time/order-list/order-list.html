@@ -37,7 +37,7 @@
     </button>
   </div>
 
-  <div class="ol-frow">
+  <div class="ol-frow ol-frow-dates">
     <p-datepicker
       [ngModel]="startDate()"
       (ngModelChange)="startDate.set($event)"
@@ -63,13 +63,13 @@
 
   <div class="ol-frow">
     <select
-      class="ol-statesel"
+      class="pill ol-statesel {{ stateSelectClass() }}"
       [ngModel]="state()"
       (ngModelChange)="state.set($event)"
     >
-      <option value="">Nessuno</option>
+      <option class="pill p-none" value="">Nessuno</option>
       @for (opt of stateOptions; track opt.value) {
-        <option [value]="opt.value">{{ opt.label }}</option>
+        <option class="pill {{ opt.cssClass }}" [value]="opt.value">{{ opt.label }}</option>
       }
     </select>
   </div>
