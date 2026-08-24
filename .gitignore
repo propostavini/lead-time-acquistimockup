@@ -1,0 +1,32 @@
+# Compilato / output
+/dist
+/tmp
+/out-tsc
+
+# Dipendenze
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.launch
+.classpath
+*.sublime-workspace
+
+# Varie
+.DS_Store
+Thumbs.db
+.angular/cache
+.sass-cache/
+connect.lock
+coverage
+libpeerconnection.log
+testem.log
+typings
+
+# Ambiente
+.env
