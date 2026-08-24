@@ -1,0 +1,246 @@
+<header class="od-header">
+  <div class="left">
+    <h1>
+      {{ order().supplier_name }}
+      <span class="statebadge {{ STATE_LABELS[order().state].cssClass }}">
+        {{ STATE_LABELS[order().state].label }}
+      </span>
+    </h1>
+    <div class="od-navrow">
+      <a class="od-navlink" href="#" (click)="$event.preventDefault()" title="Apre la scheda in NAV">
+        <span class="lb">Produttore</span> {{ order().supplier_code }}
+        <img class="icon-14" src="icons/extlink.svg" alt="" />
+      </a>
+      @if (order().order_number) {
+        <a class="od-navlink" href="#" (click)="$event.preventDefault()" title="Apre l'ordine in NAV">
+          <span class="lb">Ordine</span> {{ order().order_number }}
+          <img class="icon-14" src="icons/extlink.svg" alt="" />
+        </a>
+      }
+      <span class="chip" [class.ritiro]="order().is_pickup">
+        @if (order().is_pickup) {
+          Ritiro nostro · RITIRO (PA)
+        } @else if (order().carrier) {
+          Corriere: {{ order().carrier }} · SPEDITO (PF)
+        } @else {
+          —
+        }
+      </span>
+      @if (order().order_date) {
+        <span class="chip neutra">Ordine del {{ shortDate(order().order_date) }}</span>
+      }
+    </div>
+  </div>
+
+  @if (order().alert_message) {
+    <div class="od-alert">
+      <span class="ic">⚠️</span>
+      <div>
+        <b>ATTENZIONE — problema su questo ordine</b>
+        <span>{{ order().alert_message }}</span>
+      </div>
+    </div>
+  }
+</header>
+
+<div class="od-grid">
+  <div class="od-arrow" [style.height.px]="ARROW_Y.arrival + 24">
+    <div class="cap">Lead time</div>
+    <span class="order-date" [style.top.px]="ARROW_Y.railTop - 22">
+      Ordine {{ shortDate(order().order_date) }}
+    </span>
+
+    <div
+      class="rail"
+      [style.top.px]="ARROW_Y.railTop"
+      [style.height.px]="ARROW_Y.railBottom - ARROW_Y.railTop"
+    ></div>
+    <div
+      class="rail-fill"
+      [style.top.px]="ARROW_Y.railTop"
+      [style.height.px]="railFillBottom() - ARROW_Y.railTop"
+    ></div>
+    <div class="tip" [style.top.px]="ARROW_Y.railBottom"></div>
+
+    <div
+      class="od-connector"
+      [class.has-tracking]="order().tracking"
+      [style.top.px]="ARROW_Y.shipped"
+    ></div>
+
+    @for (stage of stages(); track stage.label) {
+      <div class="node" [class.on]="stage.on" [style.top.px]="stage.top"></div>
+      <div class="stage" [class.on]="stage.on" [style.top.px]="stage.top">
+        <span class="st">{{ stage.label }}</span>
+        <span class="dt">{{ shortDate(stage.date) }}</span>
+      </div>
+    }
+
+    <span
+      class="arrival"
+      [class.alert]="order().alert_message"
+      [style.top.px]="ARROW_Y.arrival"
+    >
+      ↓ arrivo {{ arrivalLabel() }}
+    </span>
+  </div>
+
+  <div>
+    <div class="od-panel">
+      <div class="od-params">
+        <div class="od-param">
+          <div class="icons">
+            <img class="icon-20" src="icons/cronometro.svg" alt="Storico" />
+          </div>
+          <div class="value">
+            @if (order().lead_time.history_days !== null) {
+              {{ order().lead_time.history_days }} gg
+            } @else {
+              —
+            }
+          </div>
+          <div class="note">{{ order().lead_time.history_note }}</div>
+        </div>
+        <div class="od-param">
+          <div class="icons">
+            <img class="icon-20" src="icons/geografia.svg" alt="Geografia" />
+          </div>
+          <div class="value">
+            {{ order().lead_time.geo_zone }}
+            @if (order().lead_time.geo_days !== null) {
+              → {{ order().lead_time.geo_days }} gg
+            }
+          </div>
+          <div class="note">{{ order().lead_time.geo_note }}</div>
+        </div>
+        <div class="od-param">
+          <div class="icons">
+            <img class="icon-20" src="icons/camion.svg" alt="Ritiro o spedizione" />
+          </div>
+          <div class="value">{{ order().carrier ?? '—' }}</div>
+          @if (order().carrier) {
+            <span class="patag" [class.pa]="order().is_pickup" [class.pf]="!order().is_pickup">
+              @if (order().is_pickup) {
+                RITIRO (PA)
+              } @else {
+                SPEDIZIONE (PF)
+              }
+            </span>
+          }
+        </div>
+      </div>
+
+      <div class="od-leads">
+        <div class="od-leadbox std">
+          <div class="ll">Stima standard</div>
+          <div class="big">
+            @if (order().lead_time.standard_arrival) {
+              ~{{ shortDate(order().lead_time.standard_arrival) }}
+            } @else {
+              riordino consigliato
+            }
+          </div>
+          <div class="sub">
+            @if (order().lead_time.standard_days !== null) {
+              {{ order().lead_time.standard_days }} gg ·
+            }
+            {{ order().lead_time.standard_basis }}
+          </div>
+        </div>
+
+        @if (order().lead_time.pv_arrival; as pvArrival) {
+          <div class="od-leadbox pv">
+            <div class="ll">
+              Stima PV
+              <button type="button" class="od-edit" [disabled]="saving()" (click)="openCalendar()">
+                modifica
+              </button>
+              <button
+                type="button"
+                class="od-edit del"
+                [disabled]="saving()"
+                (click)="deletePvEstimate()"
+              >
+                ✕ elimina
+              </button>
+            </div>
+            <div class="big">{{ shortDate(pvArrival) }}</div>
+            <div class="sub">per questo ordine</div>
+          </div>
+        } @else {
+          <div class="od-leadbox pv empty">
+            <div class="ll">
+              Stima PV
+              <button type="button" class="od-edit" [disabled]="saving()" (click)="openCalendar()">
+                + imposta
+              </button>
+            </div>
+            <div class="big">nessuna — vale la standard</div>
+            <div class="sub">per questo ordine</div>
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (calendarOpen()) {
+      <div class="od-calendar">
+        <p-datepicker [inline]="true" dateFormat="dd/mm/yy" (onSelect)="onPvDatePicked($event)" />
+      </div>
+    }
+
+    @if (order().tracking; as tracking) {
+      <div class="od-track" [class.pickup]="tracking.mode === 'pickup'">
+        <div class="th">
+          <span class="carrier">{{ tracking.carrier_name }}</span>
+          @if (tracking.mode === 'pickup') {
+            visibilità diretta
+          } @else {
+            lettura tracking
+          }
+          <span class="ref">{{ tracking.reference }}</span>
+        </div>
+        @for (event of tracking.events; track event.datetime) {
+          <div class="ev {{ event.kind }}">
+            <span class="d">{{ shortDateTime(event.datetime) }}</span>
+            <span class="mk"></span>
+            <span>{{ event.description }}</span>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="od-track none">
+        <div class="th">Nessun tracking — in attesa di dati dal produttore o dal corriere</div>
+      </div>
+    }
+
+    <div class="od-mails">
+      @if (order().mails.length === 0) {
+        <div class="od-mail-empty">
+          Nessuna mail per questo produttore.
+          @if (order().state === 'none') {
+            Stato NESSUNO: il lead time guarda lo storico dei riordini.
+          }
+          @if (order().state === 'not_sent') {
+            Ordine presente in NAV, mail in uscita non trovata.
+          }
+        </div>
+      }
+      @for (mail of order().mails; track mail.datetime) {
+        <div class="od-mail {{ mail.direction }}">
+          <div class="dt">{{ shortDateTime(mail.datetime) }}</div>
+          <div class="ico"><img [src]="mailIcon(mail.direction)" alt="" /></div>
+          <div class="body">
+            <div class="subj">{{ mail.subject }}</div>
+            <div class="snip">{{ mail.snippet }}</div>
+            <span class="setst">
+              → {{ mail.detected_state_label }}
+              @if (mail.by_ai) {
+                <span class="ai">✦ AI</span>
+              }
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
