@@ -1,0 +1,24 @@
+<div class="lt-topbar">
+  <button type="button" class="lt-refresh" (click)="refresh()">⟳ Aggiorna</button>
+  <img class="glass" [class.spin]="refreshing()" src="img/glass-truck.png" alt="" />
+</div>
+
+<div class="lt-app">
+  <aside class="lt-side">
+    <app-order-list
+      [orders]="orders()"
+      [selectedId]="selectedId()"
+      (filtersChange)="onFiltersChange($event)"
+      (selectOrder)="onSelect($event)"
+    />
+  </aside>
+
+  <main class="lt-main">
+    @if (loadError()) {
+      <p class="lt-error">Non riesco a leggere gli ordini: il mock/backend non risponde.</p>
+    } @else if (selectedOrder(); as order) {
+      <app-order-detail [order]="order" (orderUpdated)="onOrderUpdated($event)" />
+      <app-mail-composer [order]="order" />
+    }
+  </main>
+</div>

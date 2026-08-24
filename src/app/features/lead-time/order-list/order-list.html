@@ -1,0 +1,85 @@
+<div class="ol-header">Ordini a produttore · più recenti</div>
+
+<div class="ol-tools">
+  <input
+    class="ol-search"
+    type="text"
+    placeholder="Cerca produttore o ordine…"
+    [ngModel]="search()"
+    (ngModelChange)="search.set($event)"
+  />
+
+  <div class="ol-frow">
+    <button
+      type="button"
+      class="ol-alertbtn"
+      [class.on]="onlyAlerts()"
+      title="Solo allerte"
+      (click)="toggleAlerts()"
+    >
+      ⚠
+    </button>
+    <button
+      type="button"
+      class="ol-fbtn"
+      [class.on]="mode() === 'pickup'"
+      (click)="toggleMode('pickup')"
+    >
+      Ritiro (PA)
+    </button>
+    <button
+      type="button"
+      class="ol-fbtn"
+      [class.on]="mode() === 'shipping'"
+      (click)="toggleMode('shipping')"
+    >
+      Spedizione (PF)
+    </button>
+  </div>
+
+  <div class="ol-frow">
+    <p-datepicker
+      [ngModel]="startDate()"
+      (ngModelChange)="startDate.set($event)"
+      dateFormat="dd/mm/yy"
+      placeholder="Ordini dal —"
+      [showIcon]="false"
+      styleClass="ol-date"
+      inputStyleClass="ol-date-input"
+    />
+    <p-datepicker
+      [ngModel]="endDate()"
+      (ngModelChange)="endDate.set($event)"
+      dateFormat="dd/mm/yy"
+      placeholder="fino al —"
+      [showIcon]="false"
+      styleClass="ol-date"
+      inputStyleClass="ol-date-input"
+    />
+    @if (startDate() || endDate()) {
+      <button type="button" class="ol-clear" (click)="clearDates()">✕ date</button>
+    }
+  </div>
+</div>
+
+@if (orders().length === 0) {
+  <div class="ol-empty">Nessun ordine corrisponde alla ricerca o ai filtri.</div>
+}
+@for (order of orders(); track order.id) {
+  <button
+    type="button"
+    class="ol-card"
+    [class.sel]="order.id === selectedId()"
+    (click)="selectOrder.emit(order.id)"
+  >
+    <div class="name">{{ order.supplier_name.split('—')[0].trim() }}</div>
+    <div class="code">{{ order.order_number || '—' }}</div>
+    <div class="zone">{{ order.zone }}{{ carrierLine(order) }}</div>
+    <span class="pill {{ STATE_LABELS[order.state].cssClass }}">
+      {{ STATE_LABELS[order.state].label }}
+    </span>
+    @if (order.alert_message) {
+      <span class="ol-alertdot">⚠ ALLERTA</span>
+    }
+  </button>
+}
