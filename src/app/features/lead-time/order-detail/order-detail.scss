@@ -1,0 +1,9 @@
+/* Stili nel bundle globale src/styles/_order-detail.scss (issue #10).
+   Qui solo il contenitore del calendario della stima PV. */
+.od-calendar {
+  position: absolute;
+  z-index: 40;
+  margin-top: -14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  border-radius: 14px;
+}
