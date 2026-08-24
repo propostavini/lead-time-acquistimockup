@@ -18,16 +18,14 @@ npm start        # app su http://localhost:4200
 > di generazione (registry bloccato). La prima verifica di build/serve va fatta in locale o
 > in CI; gli errori di battitura eventuali si sistemano al primo giro.
 
-## Immagini da caricare a mano (GitHub web → Add file → Upload files)
+## Immagini
 
-Il push automatico non può caricare binari. Servono in `public/img/`:
-
-- `glass-truck.png` — bicchiere col camioncino (testata + firma), sfondo trasparente
-- `logo-vini.png` — logo Proposta Vini, sfondo trasparente
-- `logo-spirits.png` — logo Proposta Spirits, sfondo trasparente
-
-e un `public/favicon.ico`. I file pronti sono nella cartella di lavoro di Roberto
-(`Portale acquisti/img-per-github/`).
+Il push automatico non può caricare binari: `glass-truck.png` (bicchiere col
+camioncino, testata + firma), `logo-vini.png` e `logo-spirits.png` sono stati
+caricati a mano da Roberto via GitHub web e vivono in `public/icons/` insieme
+alle icone svg (non in `public/img/` come previsto all'inizio — i template
+puntano a `icons/...`, coerente con dove sono davvero i file). Manca ancora
+un `public/favicon.ico`.
 
 ## Cosa fa oggi (con il mock)
 

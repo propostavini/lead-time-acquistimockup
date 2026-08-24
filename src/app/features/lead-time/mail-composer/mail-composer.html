@@ -56,11 +56,11 @@
 
         @if (signature() !== 'none') {
           <div class="mc-firma">
-            <img class="fimg" [class.big]="signature() === 'francesco'" src="img/glass-truck.png" alt="" />
+            <img class="fimg" [class.big]="signature() === 'francesco'" src="icons/glass-truck.png" alt="" />
             <div class="fdati">
               <span class="flogos">
-                <img src="img/logo-vini.png" alt="Proposta Vini" />
-                <img src="img/logo-spirits.png" alt="Proposta Spirits" />
+                <img src="icons/logo-vini.png" alt="Proposta Vini" />
+                <img src="icons/logo-spirits.png" alt="Proposta Spirits" />
               </span>
               <span class="fname">{{ SIGNATURES[signature()].name }}</span>
               <span>{{ SIGNATURES[signature()].role }}</span>
