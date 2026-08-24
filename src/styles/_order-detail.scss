@@ -1,0 +1,561 @@
+/* Dettaglio ordine: testata, freccia lead time, matrice, stime, tracking, fraseggio.
+   Altezze bloccate come da mockup v12+: la linea Spedito -> box tracking resta
+   orizzontale perché testata e pannello primario hanno altezza fissa. */
+
+.od-header {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  min-height: 92px;
+}
+
+.od-header .left {
+  flex: 1;
+  min-width: 0;
+}
+
+.od-header h1 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--forest-deep);
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.od-navrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.od-navlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--blu);
+  text-decoration: none;
+  background: var(--blu-bg);
+  border: 1px solid var(--blu-line);
+  padding: 3px 9px;
+  border-radius: 7px;
+}
+
+.od-navlink:hover {
+  background: #dcebf7;
+}
+
+.od-navlink .lb {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.od-alert {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  border: 1.5px solid var(--terra);
+  background: var(--terra-soft);
+  color: var(--terra);
+  border-radius: 13px;
+  width: 50%;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 10px 14px;
+}
+
+.od-alert .ic {
+  font-size: 26px;
+}
+
+.od-alert b {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  display: block;
+}
+
+.od-alert span {
+  font-size: 12.5px;
+}
+
+/* ── griglia: freccia a sinistra, pannelli a destra ── */
+.od-grid {
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  gap: 22px;
+  margin-top: 14px;
+}
+
+.od-arrow {
+  position: relative;
+}
+
+.od-arrow .cap {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blu);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.od-arrow .rail,
+.od-arrow .rail-fill {
+  position: absolute;
+  left: 15px;
+  width: 3px;
+  border-radius: 2px;
+}
+
+.od-arrow .rail {
+  background: var(--celeste-line);
+}
+
+.od-arrow .rail-fill {
+  background: var(--blu);
+}
+
+.od-arrow .tip {
+  position: absolute;
+  left: 11px;
+  width: 0;
+  height: 0;
+  border-left: 5.5px solid transparent;
+  border-right: 5.5px solid transparent;
+  border-top: 9px solid var(--blu);
+}
+
+.od-arrow .order-date {
+  position: absolute;
+  left: 32px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.od-arrow .node {
+  position: absolute;
+  left: 16px;
+  transform: translate(-50%, -50%);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--celeste-line);
+}
+
+.od-arrow .node.on {
+  width: 14px;
+  height: 14px;
+  background: var(--blu);
+  border-color: var(--blu);
+}
+
+.od-arrow .stage {
+  position: absolute;
+  left: 32px;
+  transform: translateY(-50%);
+}
+
+.od-arrow .stage .st {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: #9a927e;
+  display: block;
+  line-height: 1.2;
+}
+
+.od-arrow .stage.on .st {
+  color: var(--forest-deep);
+}
+
+.od-arrow .stage .dt {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.od-arrow .arrival {
+  position: absolute;
+  left: 0;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--blu);
+}
+
+.od-arrow .arrival.alert {
+  color: var(--terra);
+}
+
+/* linea orizzontale Spedito -> box tracking (blu col tracking, celeste chiara senza) */
+.od-connector {
+  position: absolute;
+  left: 24px;
+  right: -22px;
+  height: 1px;
+  background: var(--celeste-line);
+}
+
+.od-connector.has-tracking {
+  background: var(--blu);
+}
+
+/* ── pannello primario: matrice 3 parametri + stime, altezza fissa ── */
+.od-panel {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 0 0 20px;
+  height: 206px;
+  background: #fff;
+}
+
+.od-params {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+.od-param {
+  padding: 13px 15px;
+  border-right: 1px solid var(--line-soft);
+}
+
+.od-param:last-child {
+  border-right: none;
+}
+
+.od-param .icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  min-height: 22px;
+}
+
+.od-param .value {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-serif);
+  color: var(--ink);
+}
+
+.od-param .note {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.od-param .patag {
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.od-leads {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line-soft);
+  height: 104px;
+  box-sizing: border-box;
+}
+
+.od-leadbox {
+  padding: 14px 16px;
+}
+
+.od-leadbox.std {
+  background: var(--blu-bg);
+  border-right: 1px solid var(--line-soft);
+}
+
+.od-leadbox.pv {
+  background: var(--sage-soft);
+}
+
+.od-leadbox.pv.empty {
+  background: #f7f4ec;
+}
+
+.od-leadbox .ll {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.od-leadbox.std .ll {
+  color: var(--blu);
+}
+
+.od-leadbox.pv .ll {
+  color: var(--forest);
+}
+
+.od-leadbox .big {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.od-leadbox.std .big {
+  color: var(--blu);
+}
+
+.od-leadbox.pv .big {
+  color: var(--forest);
+}
+
+.od-leadbox.pv.empty .big {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.od-leadbox .sub {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.od-edit {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--forest);
+  background: #fff;
+  border: 1px solid var(--sage-line);
+  border-radius: 6px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.od-edit.del {
+  color: var(--terra);
+  border-color: var(--terra-line);
+}
+
+/* ── box tracking (sempre presente, anche "nessun tracking") ── */
+.od-track {
+  border: 1px solid var(--celeste-line);
+  border-radius: 13px;
+  overflow: hidden;
+  background: var(--celeste-bg);
+  margin-top: 0;
+}
+
+.od-track.pickup {
+  border-color: var(--sage-line);
+  background: var(--sage-soft);
+}
+
+.od-track.none {
+  border-color: var(--celeste-line);
+  background: #f8fbfd;
+}
+
+.od-track .th {
+  padding: 11px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--celeste);
+}
+
+.od-track.pickup .th {
+  color: var(--forest);
+}
+
+.od-track.none .th {
+  color: #8fb6d6;
+}
+
+.od-track .carrier {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  color: #fff;
+  background: var(--blu);
+  padding: 2px 9px;
+  border-radius: 6px;
+}
+
+.od-track.pickup .carrier {
+  background: var(--forest);
+}
+
+.od-track .ref {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: auto;
+  text-transform: none;
+}
+
+.od-track .ev {
+  display: flex;
+  gap: 11px;
+  padding: 9px 15px;
+  font-size: 12.5px;
+}
+
+.od-track .ev .d {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+  min-width: 80px;
+}
+
+.od-track .ev .mk {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--celeste-line);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.od-track .ev.current .mk {
+  background: var(--blu);
+}
+
+.od-track .ev.current {
+  font-weight: 600;
+}
+
+.od-track .ev.exception .mk {
+  background: var(--terra);
+}
+
+.od-track .ev.exception {
+  color: var(--terra);
+  font-weight: 600;
+}
+
+/* ── fraseggio mail ── */
+.od-mails {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  overflow: hidden;
+  margin-top: 20px;
+  background: #fff;
+}
+
+.od-mail {
+  display: flex;
+  gap: 12px;
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.od-mail:last-child {
+  border-bottom: none;
+}
+
+.od-mail .dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  min-width: 80px;
+  padding-top: 2px;
+}
+
+.od-mail .ico {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+
+.od-mail.out .ico {
+  background: var(--terra-soft);
+}
+
+.od-mail.in .ico {
+  background: var(--celeste-bg);
+}
+
+.od-mail.carrier .ico {
+  background: var(--blu-bg);
+}
+
+.od-mail.nav .ico {
+  background: var(--sage-soft);
+}
+
+.od-mail .ico img {
+  width: 16px;
+  height: 16px;
+}
+
+.od-mail .body {
+  flex: 1;
+}
+
+.od-mail .subj {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.od-mail .snip {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.od-mail .setst {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--card2);
+  border: 1px solid var(--line);
+}
+
+.od-mail .ai {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--forest);
+  background: #fff;
+  border: 1px solid var(--sage-line);
+  padding: 1px 6px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+.od-mail-empty {
+  padding: 12px 15px;
+  font-size: 12.5px;
+  color: var(--muted);
+}

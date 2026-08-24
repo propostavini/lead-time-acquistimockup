@@ -1,0 +1,222 @@
+/* Composer mail: template suggerito per stato, corpo modificabile, firma, doppio Outlook. */
+
+.mc-box {
+  margin-top: 20px;
+  border: 1px solid var(--celeste-line);
+  border-radius: 13px;
+  background: var(--celeste-bg);
+  padding: 16px;
+}
+
+.mc-tpls {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 11px;
+}
+
+.mc-suggested {
+  background: #fff;
+  border: 1px solid var(--celeste-line);
+  border-radius: 11px;
+  padding: 13px 15px;
+  margin: 2px 0 4px;
+}
+
+.mc-shead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.mc-stag {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: var(--celeste);
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+
+.mc-stag.alt {
+  background: #c6bfa9;
+}
+
+.mc-stitle {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--celeste);
+}
+
+.mc-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+.mc-meta .to {
+  color: var(--blu);
+}
+
+.mc-subject {
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 9px;
+  padding-bottom: 9px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.mc-body {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 110px;
+  border: none;
+  resize: vertical;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: transparent;
+  border-radius: 6px;
+  padding: 2px 4px;
+  outline: none;
+}
+
+.mc-body:focus {
+  outline: 2px solid var(--celeste-line);
+  background: #fdfeff;
+}
+
+.mc-fsel {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mc-firma {
+  margin-top: 9px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.mc-firma .fimg {
+  height: 78px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.mc-firma .fimg.big {
+  height: 108px;
+}
+
+.mc-firma .fdati {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.mc-firma .flogos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.mc-firma .flogos img {
+  height: 26px;
+  width: auto;
+}
+
+.mc-firma .fname {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ocra);
+  margin-top: 2px;
+}
+
+.mc-firma .fmono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.mc-firma .flink {
+  color: var(--blu);
+  text-decoration: underline;
+}
+
+.mc-firma .fbold {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.mc-send {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mc-obtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 10px;
+  padding: 9px 16px 9px 11px;
+  cursor: pointer;
+  border: 1px solid #d7e3ef;
+  background: #fff;
+  color: var(--ink);
+}
+
+.mc-obtn:hover {
+  background: #f5faff;
+}
+
+.mc-obtn.mir {
+  padding: 9px 11px 9px 16px;
+}
+
+.mc-obtn.sent {
+  background: var(--sage-soft);
+  border-color: var(--sage-line);
+  color: var(--forest);
+}
+
+.mc-obtn img {
+  width: 22px;
+  height: 20px;
+}
+
+.mc-closed {
+  margin-top: 20px;
+  background: var(--sage-soft);
+  border: 1px solid var(--sage-line);
+  color: var(--forest);
+  border-radius: 11px;
+  padding: 12px 15px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+}
