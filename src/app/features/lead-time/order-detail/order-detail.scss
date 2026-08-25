@@ -1,9 +1,20 @@
 /* Stili nel bundle globale src/styles/_order-detail.scss (issue #10).
    Qui solo il contenitore del calendario della stima PV. */
+
+/* colonna destra della griglia (pannello + calendario + tracking + mail):
+   serve come ancora per posizionare il calendario a destra, sotto il
+   pannello, invece che a sinistra. */
+.od-right {
+  position: relative;
+}
+
 .od-calendar {
   position: absolute;
+  top: 206px;
+  right: 0;
+  left: auto;
+  margin-top: 8px;
   z-index: 40;
-  margin-top: -14px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
   border-radius: 14px;
 }
