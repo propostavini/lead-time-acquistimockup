@@ -493,6 +493,11 @@
 }
 
 .od-mail.out .ico {
+  background: var(--terra-soft);
+}
+
+/* nostri messaggi successivi al primo (solleciti): aeroplanino azzurro */
+.od-mail.out.followup .ico {
   background: var(--celeste-bg);
 }
 

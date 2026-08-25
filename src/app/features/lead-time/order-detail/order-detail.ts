@@ -1,6 +1,6 @@
 import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MailDirection, PurchaseOrderDTO, STATE_LABELS } from '@core/models';
+import { MailDirection, PurchaseOrderDTO, PurchaseOrderMailDTO, STATE_LABELS } from '@core/models';
 import { PurchaseOrdersService } from '@core/services';
 import { DatePickerModule } from 'primeng/datepicker';
 
@@ -78,14 +78,28 @@ export class OrderDetail {
     return this.ordersService.formatShortDateTime(iso);
   }
 
-  mailIcon(direction: MailDirection): string {
+  mailIcon(order: PurchaseOrderDTO, mail: PurchaseOrderMailDTO): string {
     const icons: Record<MailDirection, string> = {
-      out: 'icons/mail-out.svg',
+      out: this.isFollowUpOut(order, mail) ? 'icons/mail-out-reminder.svg' : 'icons/mail-out.svg',
       in: 'icons/mail-in.svg',
       carrier: 'icons/camion-blu.svg',
       nav: 'icons/nav-check.svg',
     };
-    return icons[direction];
+    return icons[mail.direction];
+  }
+
+  /**
+   * true per una mail "out" successiva alla prima del thread: sono i nostri
+   * solleciti (data spedizione, tracking, ...), mostrati con l'aeroplanino
+   * azzurro. La prima mail "out" e' l'ordine iniziale e resta con l'icona
+   * originale (su richiesta esplicita di Roberto, non va toccata).
+   */
+  isFollowUpOut(order: PurchaseOrderDTO, mail: PurchaseOrderMailDTO): boolean {
+    if (mail.direction !== 'out') {
+      return false;
+    }
+    const firstOut = order.mails.find((m) => m.direction === 'out');
+    return mail !== firstOut;
   }
 
   openCalendar(): void {

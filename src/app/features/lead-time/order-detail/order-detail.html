@@ -226,9 +226,9 @@
         </div>
       }
       @for (mail of order().mails; track mail.datetime) {
-        <div class="od-mail {{ mail.direction }}">
+        <div class="od-mail {{ mail.direction }}" [class.followup]="isFollowUpOut(order(), mail)">
           <div class="dt">{{ shortDateTime(mail.datetime) }}</div>
-          <div class="ico"><img [src]="mailIcon(mail.direction)" alt="" /></div>
+          <div class="ico"><img [src]="mailIcon(order(), mail)" alt="" /></div>
           <div class="body">
             <div class="subj">{{ mail.subject }}</div>
             <div class="snip">{{ mail.snippet }}</div>
