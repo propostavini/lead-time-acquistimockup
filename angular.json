@@ -6,7 +6,10 @@
     "cache": {
       "enabled": false
     },
-    "schematicCollections": ["angular-eslint"]
+    "schematicCollections": [
+      "angular-eslint"
+    ],
+    "analytics": false
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -63,6 +66,32 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "demo": {
+              "outputHashing": "all",
+              "baseHref": "/lead-time-acquisti/",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.demo.ts"
+                },
+                {
+                  "replace": "src/app/app.config.ts",
+                  "with": "src/app/app.config.demo.ts"
+                }
+              ],
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1MB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ]
             }
