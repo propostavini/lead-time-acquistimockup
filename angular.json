@@ -71,7 +71,7 @@
             },
             "demo": {
               "outputHashing": "all",
-              "baseHref": "/lead-time-acquisti/",
+              "baseHref": "/lead-time-acquistimockup/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
